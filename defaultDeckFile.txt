@@ -1,1 +1,1 @@
-H8, DQ, D6, S9, HK, D4, DJ, C4, D2, H4, D7, H7, H10, SQ, H2, D9, S6, CK, S8, C5, C3, H5, C6, D3, HA, S4, C2, D8, C10, D5, CJ, H6, S10, SA, C4, S3, HQ, C9, H3, C3, CA, H9, SJ, HJ, S2, DA, C7, S5, HK, D10, S7, CQ
+H5, S5, D4, D5, H2, S6, D6, C8, S2, D10, H6, C2, C5, C9, DQ, C7, C6, SQ, DA, H9, SJ, H3, CA, H4, C10, S3, S7, S4, HJ, H10, S8, SA, HQ, HK, DK, S10, D3, SK, D9, DJ, H7, D2, D8, C3, D7, HA, S9, CK, CQ, CJ, C4, H8

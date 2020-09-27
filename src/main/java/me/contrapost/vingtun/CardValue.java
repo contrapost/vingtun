@@ -10,7 +10,7 @@ public enum CardValue {
     SIX(6, "6"),
     SEVEN(7, "7"),
     EIGHT(8, "8"),
-    NINE(9,"9"),
+    NINE(9, "9"),
     TEN(10, "10"),
     JACK(10, "J"),
     QUEEN(10, "Q"),
@@ -25,13 +25,14 @@ public enum CardValue {
         this.designation = designation;
     }
 
-    public CardValue getByDesignation(final String designation) {
+    public static CardValue getByDesignation(final String designation) {
         for (CardValue cardValue : values()) {
             if (cardValue.designation.equals(designation)) {
                 return cardValue;
             }
         }
-        throw new NoSuchElementException("me.contrapost.vingtun.CardValue with designation '" + designation + "' doesn't exist.");
+        throw new NoSuchElementException(
+                "me.contrapost.vingtun.CardValue with designation '" + designation + "' doesn't exist.");
     }
 
     public int getValue() {
