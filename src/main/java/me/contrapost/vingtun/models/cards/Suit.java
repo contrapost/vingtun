@@ -1,4 +1,4 @@
-package me.contrapost.vingtun;
+package me.contrapost.vingtun.models.cards;
 
 import java.util.NoSuchElementException;
 
@@ -21,7 +21,7 @@ public enum Suit {
             }
         }
         throw new NoSuchElementException(
-                "me.contrapost.vingtun.Suit with value '" + value + "' doesn't exist.");
+                "me.contrapost.vingtun.models.cards.Suit with value '" + value + "' doesn't exist.");
     }
 
     public String getValue() {

@@ -1,4 +1,4 @@
-package me.contrapost.vingtun;
+package me.contrapost.vingtun.models.cards;
 
 import java.util.NoSuchElementException;
 
@@ -32,7 +32,7 @@ public enum CardValue {
             }
         }
         throw new NoSuchElementException(
-                "me.contrapost.vingtun.CardValue with designation '" + designation + "' doesn't exist.");
+                "me.contrapost.vingtun.models.cards.CardValue with designation '" + designation + "' doesn't exist.");
     }
 
     public int getValue() {

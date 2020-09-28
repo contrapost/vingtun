@@ -1,11 +1,11 @@
-package me.contrapost.vingtun;
+package me.contrapost.vingtun.util;
 
 import com.github.stefanbirkner.systemlambda.SystemLambda;
 import org.junit.jupiter.api.Test;
 
 import static com.github.stefanbirkner.systemlambda.SystemLambda.tapSystemOut;
-import static me.contrapost.vingtun.Constants.DEFAULT_FILE_NAME;
-import static org.junit.jupiter.api.Assertions.*;
+import static me.contrapost.vingtun.util.Constants.DEFAULT_FILE_NAME;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CLIProcessorTest {
 

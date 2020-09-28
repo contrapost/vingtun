@@ -1,4 +1,8 @@
-package me.contrapost.vingtun;
+package me.contrapost.vingtun.util;
+
+import me.contrapost.vingtun.models.cards.Card;
+import me.contrapost.vingtun.models.cards.CardValue;
+import me.contrapost.vingtun.models.cards.Suit;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -12,9 +16,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static me.contrapost.vingtun.Constants.NUMBER_OF_CARDS;
+import static me.contrapost.vingtun.game.util.VingtUnConstants.NUMBER_OF_CARDS;
 
 public class DeckProcessor {
+
+    private final static String CARD_REGEX = "([HDCS]([2-9]|10|[JKQA]))";
 
     private DeckProcessor() {
     }
@@ -51,10 +57,6 @@ public class DeckProcessor {
         return deck;
     }
 
-    private static boolean correctSetOfCards(final ArrayList<Card> cards) {
-        return new HashSet<>(cards).size() == 52;
-    }
-
     public static ArrayList<Card> initiateNewDeck() {
         ArrayList<Card> cards = new ArrayList<>(NUMBER_OF_CARDS);
         Arrays.stream(CardValue.values())
@@ -64,12 +66,15 @@ public class DeckProcessor {
         return cards;
     }
 
+    private static boolean fileContentIsValid(final String content) {
+        return content.matches("^" + CARD_REGEX + "{" + NUMBER_OF_CARDS + "}$");
+    }
+
     private static ArrayList<Card> convertContentToCards(final String content) {
         ArrayList<String> allMatches = new ArrayList<>(NUMBER_OF_CARDS);
-        Matcher m = Pattern.compile("([HDCS]([2-9]|10|[JKQA]))")
-                           .matcher(content);
-        while (m.find()) {
-            allMatches.add(m.group());
+        Matcher matcher = Pattern.compile(CARD_REGEX).matcher(content);
+        while (matcher.find()) {
+            allMatches.add(matcher.group());
         }
         return allMatches.stream()
                          .map(cardCode -> new Card(Suit.getByValue(cardCode.substring(0, 1)),
@@ -77,7 +82,7 @@ public class DeckProcessor {
                          .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    private static boolean fileContentIsValid(final String content) {
-        return content.matches("^([HDCS]([2-9]|10|[JKQA])){" + NUMBER_OF_CARDS + "}$");
+    private static boolean correctSetOfCards(final ArrayList<Card> cards) {
+        return new HashSet<>(cards).size() == 52;
     }
 }

@@ -1,4 +1,4 @@
-package me.contrapost.vingtun;
+package me.contrapost.vingtun.models.cards;
 
 import java.util.Objects;
 

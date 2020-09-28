@@ -1,5 +1,6 @@
-package me.contrapost.vingtun;
+package me.contrapost.vingtun.util;
 
+import me.contrapost.vingtun.models.cards.Card;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
