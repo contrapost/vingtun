@@ -15,10 +15,18 @@
       <artifactId>commons-cli</artifactId>
       <version>1.4</version>
     </dependency>
+
+    <!--TEST-->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <version>5.5.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.stefanbirkner</groupId>
+      <artifactId>system-lambda</artifactId>
+      <version>1.1.0</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

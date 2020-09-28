@@ -8,7 +8,14 @@ public class VingtUnApp {
 
     public static void main(final String[] args) {
         String deckFileName = getFileNameFromCLI(args);
-        ArrayList<Card> deck = new Deck(deckFileName).getCards();
-        deck.forEach(System.out::println);
+        Deck deck = new Deck(deckFileName);
+        if (deck.isNew()) {
+            System.out.println("New deck of cards was initialized.");
+        }
+        ArrayList<Card> cards = deck.getCards();
+        Card lastCard = cards.remove(cards.size() - 1);
+        System.out.println(lastCard);
+        System.out.println();
+        deck.getCards().forEach(System.out::println);
     }
 }

@@ -28,7 +28,7 @@ public class DeckProcessor {
         } else {
             try {
                 String sanitizedContent = Files.readString(deckFilePath, StandardCharsets.US_ASCII)
-                                               .replaceAll("\n", "")
+                                               .trim()
                                                .replaceAll(", ", "");
                 if (!fileContentIsValid(sanitizedContent)) {
                     System.err.println(
