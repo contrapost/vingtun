@@ -32,7 +32,7 @@ public enum CardValue {
             }
         }
         throw new NoSuchElementException(
-                "me.contrapost.vingtun.models.cards.CardValue with designation '" + designation + "' doesn't exist.");
+                CardValue.class.getSimpleName() + " with designation '" + designation + "' doesn't exist.");
     }
 
     public int getValue() {

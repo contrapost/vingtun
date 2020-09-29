@@ -28,7 +28,7 @@ public class Deck {
     }
 
     public void shuffle(final int times) {
-        IntStream.range(1, times).forEach(i -> Collections.shuffle(cards));
+        IntStream.range(0, times).forEach(i -> Collections.shuffle(cards));
         shuffled = true;
     }
 

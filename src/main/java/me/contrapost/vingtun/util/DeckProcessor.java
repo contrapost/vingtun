@@ -20,7 +20,7 @@ import static me.contrapost.vingtun.game.util.VingtUnConstants.NUMBER_OF_CARDS;
 
 public class DeckProcessor {
 
-    private final static String CARD_REGEX = "([HDCS]([2-9]|10|[JKQA]))";
+    public final static String CARD_REGEX = "([HDCS]([2-9]|10|[JKQA]))";
 
     private DeckProcessor() {
     }

@@ -1,7 +1,7 @@
 package me.contrapost.vingtun.util;
 
 import me.contrapost.vingtun.models.cards.Card;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,10 +10,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static me.contrapost.vingtun.FileTestUtil.createFile;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
-class DeckProcessorTest {
+public class DeckProcessorTest {
 
     @Test
     public void nonExistingFileResultsInReturningNull() {
@@ -28,8 +29,8 @@ class DeckProcessorTest {
                          "S5, H10, SK, D4, S8, H2, C5, H4, D7, C2, S9, C8, H8, D6, S4, H3, D3, CK, D2, DJ, " +
                          "D8, S7, C3, H5, SQ, SA, H9, S2, CA, C10, CQ, C7, DK\n";
         String fileName = createFile(content);
-        ArrayList<Card> deck = DeckProcessor.getFromFile(fileName);
-        String fromDeck = deck.stream().map(Card::toString).collect(Collectors.joining(", "));
+        ArrayList<Card> cards = DeckProcessor.getFromFile(fileName);
+        String fromDeck = cards.stream().map(Card::toString).collect(Collectors.joining(", "));
         assertEquals(content.trim(), fromDeck);
     }
 
@@ -39,8 +40,8 @@ class DeckProcessorTest {
                          "S5, H10, SK, D4, S8, H2, C5, H4, D7, C2, S9, C8, H8, D6, S4, H3, D3, CK, D2, DJ, " +
                          "D8, S7, C3, H5, SQ, SA, H9, S2, CA, C10, CQ, DK, DK"; // 2 DK cards
         String fileName = createFile(content);
-        ArrayList<Card> deck = DeckProcessor.getFromFile(fileName);
-        assertNull(deck);
+        ArrayList<Card> cards = DeckProcessor.getFromFile(fileName);
+        assertNull(cards);
     }
 
     @Test
@@ -49,8 +50,8 @@ class DeckProcessorTest {
                          "S5, H10, SK, D4, S8, H2, C5, H4, D7, C2, S9, C8, H8, D6, S4, H3, D3, CK, D2, DJ, " +
                          "D8, S7, C3, H5, SQ, SA, H9, S2, CA, C10, CQ, invalid, DK";
         String fileName = createFile(content);
-        ArrayList<Card> deck = DeckProcessor.getFromFile(fileName);
-        assertNull(deck);
+        ArrayList<Card> cards = DeckProcessor.getFromFile(fileName);
+        assertNull(cards);
     }
 
     @Test
@@ -58,14 +59,5 @@ class DeckProcessorTest {
         ArrayList<Card> cards = DeckProcessor.initiateNewDeck();
         assertEquals(cards.size(), 52);
         assertEquals(new HashSet<>(cards).size(), 52);
-    }
-
-    private String createFile(final String content) throws IOException {
-        Path tempFile = Files.createTempFile("testDeckFile", ".tmp");
-        tempFile.toFile().deleteOnExit();
-
-        Files.write(tempFile, content.getBytes());
-
-        return tempFile.toString();
     }
 }

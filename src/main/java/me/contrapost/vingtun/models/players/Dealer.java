@@ -4,7 +4,7 @@ import me.contrapost.vingtun.models.cards.Card;
 import me.contrapost.vingtun.models.cards.Deck;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.stream.IntStream;
 
 import static me.contrapost.vingtun.game.util.VingtUnUtil.getPlayersScore;
 
@@ -45,7 +45,9 @@ public class Dealer implements Player {
     }
 
     public ArrayList<Card> dealCards(final int numberOfCards) {
-        return new ArrayList<>(Collections.nCopies(numberOfCards, deck.getCardFromTop()));
+        ArrayList<Card> cardsToDeal = new ArrayList<>(numberOfCards);
+        IntStream.range(0, numberOfCards).forEach(i -> cardsToDeal.add(deck.getCardFromTop()));
+        return cardsToDeal;
     }
 
     public void shuffleDeck() {

@@ -1,13 +1,13 @@
 package me.contrapost.vingtun.util;
 
 import com.github.stefanbirkner.systemlambda.SystemLambda;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import static com.github.stefanbirkner.systemlambda.SystemLambda.tapSystemOut;
 import static me.contrapost.vingtun.util.Constants.DEFAULT_FILE_NAME;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
-class CLIProcessorTest {
+public class CLIProcessorTest {
 
     @Test
     public void shortVersionOfDeckFileCorrectFileNameReturned() {
