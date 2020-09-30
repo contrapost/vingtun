@@ -1,10 +1,14 @@
 package me.contrapost.vingtun;
 
 import me.contrapost.vingtun.game.VingtUnGame;
+import me.contrapost.vingtun.models.cards.Card;
 import me.contrapost.vingtun.models.cards.Deck;
 import me.contrapost.vingtun.models.game.GameResult;
 import me.contrapost.vingtun.models.players.Dealer;
 import me.contrapost.vingtun.models.players.Punter;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static me.contrapost.vingtun.util.CLIProcessor.getFileNameFromCLI;
 
@@ -31,7 +35,11 @@ public class VingtUnApp {
 
     private static void printResults(final GameResult result) {
         System.out.printf("[%s]%n", result.getWinner().getName());
-        System.out.printf("%s: %s%n", result.getWinner().getName(), result.getWinner().getReceivedCards()); // TODO
-        System.out.printf("%s: %s", result.getLoser().getName(), result.getLoser().getReceivedCards());     // TODO
+        System.out.printf("%s: %s%n", result.getWinner().getName(), cardsAsString(result.getWinner().getReceivedCards()));
+        System.out.printf("%s: %s%n", result.getLoser().getName(), cardsAsString(result.getLoser().getReceivedCards()));
+    }
+
+    private static String cardsAsString(List<Card> cards) {
+        return cards.stream().map(Card::toString).collect(Collectors.joining(", "));
     }
 }

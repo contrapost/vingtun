@@ -21,7 +21,6 @@ public class VingtUnGame {
         // 1. Dealer has to shuffle the deck if it is new (not from a file)
         if (!dealer.getDeck().isShuffled()) {
             dealer.shuffleDeck();
-            System.out.println(dealer.getDeck());
         }
 
         // 2. dealer deals initial cards to the punter and to itself
@@ -35,19 +34,24 @@ public class VingtUnGame {
         // 4. checking if the punter has won with additional cards
         dealAddictionCards(punter, PUNTER_ADDITIONAL_CARD_LIMIT);
         int punterFinalScore = getPlayersScore(punter);
-        GameResult punterResultWithAdditionalCards = getAdditionalCardResult(punter, dealer, punterFinalScore);
+        GameResult gameResultWithPuntersAdditionalCards = getAdditionalCardResult(punter, dealer, punterFinalScore);
 
-        if (punterResultWithAdditionalCards != null) return punterResultWithAdditionalCards;
+        if (gameResultWithPuntersAdditionalCards != null) return gameResultWithPuntersAdditionalCards;
 
         // 5. checking if the dealer has won with additional cards
         dealAddictionCards(dealer, getPlayersScore(punter));
         int dealerFinalScore = getPlayersScore(dealer);
-        GameResult dealerResultWithAdditionalCards = getAdditionalCardResult(dealer, punter, dealerFinalScore);
+        GameResult gameResultWithDealerAdditionalCards = getAdditionalCardResult(dealer, punter, dealerFinalScore);
 
-        if (dealerResultWithAdditionalCards != null) return dealerResultWithAdditionalCards;
+        if (gameResultWithDealerAdditionalCards != null) return gameResultWithDealerAdditionalCards;
 
         // 6. comparing scores to find the winner
+        // could be simplified to return _new GameResult(dealer, punter)_ because dealer stopped to draw cards
+        // in previous step (5) when its score became higher than punter's,
+        // if dealer's score is greater than 21 it lost the game, if not his score is always greater than punter's
         if (punterFinalScore > dealerFinalScore) {
+            // we cannot reach this (but could be useful to have anyway for readability or future extension of the game
+            // for several punters
             return new GameResult(punter, dealer);
         } else {
             return new GameResult(dealer, punter);

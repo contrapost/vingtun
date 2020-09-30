@@ -32,8 +32,18 @@ public class Deck {
         shuffled = true;
     }
 
+    /**
+     * Return one card from the top of the deck (last card in cards array list)
+     * @return {@link Card}
+     * @throws EmptyDeckException   when the deck is empty. Shouldn't be reached with existing game rules, can be useful
+     *                              when/if game is extended for multiple players
+     */
     public Card getCardFromTop() {
-        return cards.remove(cards.size() - 1);
+        if (cards.isEmpty()) {
+            throw new EmptyDeckException();
+        } else {
+            return cards.remove(cards.size() - 1);
+        }
     }
 
     public boolean isShuffled() {

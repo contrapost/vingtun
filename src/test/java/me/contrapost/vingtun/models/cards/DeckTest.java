@@ -74,6 +74,12 @@ public class DeckTest {
         assertEquals(secondFromTop, new Card(Suit.CLUB, CardValue.SEVEN));
     }
 
+    @Test(expected = EmptyDeckException.class)
+    public void throwsExceptionWhenTryingToGetNewCardAndDeckIsEmpty() {
+        Deck deck = new Deck(null);
+        IntStream.range(0, 53).forEach(i -> deck.getCardFromTop());
+    }
+
     private ArrayList<String> cardsFromString(String cardsAsString) {
         ArrayList<String> allMatches = new ArrayList<>(NUMBER_OF_CARDS);
         Matcher matcher = Pattern.compile(CARD_REGEX).matcher(cardsAsString);
