@@ -4,6 +4,9 @@ import me.contrapost.vingtun.models.cards.Card;
 
 import java.util.List;
 
+/**
+ * Interface with common "features" of a player (i.e. dealer or punter)
+ */
 public interface Player {
 
     void receiveCards(int numberOfCards);

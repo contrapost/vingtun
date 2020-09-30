@@ -2,6 +2,9 @@ package me.contrapost.vingtun.models.game;
 
 import me.contrapost.vingtun.models.players.Player;
 
+/**
+ * Class that represents result of a game round
+ */
 public class GameResult {
 
     private final Player winner;

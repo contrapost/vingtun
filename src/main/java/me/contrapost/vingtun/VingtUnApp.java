@@ -8,10 +8,14 @@ import me.contrapost.vingtun.models.players.Dealer;
 import me.contrapost.vingtun.models.players.Punter;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static me.contrapost.vingtun.util.CLIProcessor.getFileNameFromCLI;
 
+/**
+ * Application entrypoint
+ */
 public class VingtUnApp {
 
     public static void main(final String[] args) {

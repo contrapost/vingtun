@@ -1,5 +1,6 @@
 package me.contrapost.vingtun.models.cards;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.stream.IntStream;
@@ -7,12 +8,15 @@ import java.util.stream.IntStream;
 import static me.contrapost.vingtun.util.DeckProcessor.getFromFile;
 import static me.contrapost.vingtun.util.DeckProcessor.initiateNewDeck;
 
+/**
+ * Class representing deck of cards
+ */
 public class Deck {
 
     private final ArrayList<Card> cards;
     private boolean shuffled;
 
-    public Deck(final String deckFileName) {
+    public Deck(@Nullable final String deckFileName) {
         if (null == deckFileName) {
             cards = initiateNewDeck();
             shuffled = false;

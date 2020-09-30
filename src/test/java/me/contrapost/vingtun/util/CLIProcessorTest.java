@@ -65,7 +65,7 @@ public class CLIProcessorTest {
         assertEquals(consoleOutput.trim(),
                      "Error parsing command-line arguments!\n" +
                      "Please, follow the instructions below:\n" +
-                     "usage: 21 game\n" +
+                     "usage: Vingt Un (21) game\n" +
                      " -f,--deckFile <arg>   Option specifying that game should be played with\n" +
                      "                       deck from the file <arg>. If <arg> isn't given,\n" +
                      "                       default file 'defaultDeckFile.txt' would be used.\n" +

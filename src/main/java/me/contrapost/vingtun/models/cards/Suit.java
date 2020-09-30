@@ -2,6 +2,9 @@ package me.contrapost.vingtun.models.cards;
 
 import java.util.NoSuchElementException;
 
+/**
+ * Possible card suits.
+ */
 public enum Suit {
     CLUB("C"),
     DIAMOND("D"),
@@ -21,7 +24,7 @@ public enum Suit {
             }
         }
         throw new NoSuchElementException(
-                "me.contrapost.vingtun.models.cards.Suit with value '" + value + "' doesn't exist.");
+                Suit.class.getSimpleName() + " with value '" + value + "' doesn't exist.");
     }
 
     public String getValue() {

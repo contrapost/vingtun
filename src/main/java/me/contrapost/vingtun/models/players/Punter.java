@@ -6,6 +6,9 @@ import java.util.ArrayList;
 
 import static me.contrapost.vingtun.game.util.VingtUnUtil.getPlayersScore;
 
+/**
+ * Class that represents a punter (dealer's opponent)
+ */
 public class Punter implements Player {
 
     private final Dealer dealer;

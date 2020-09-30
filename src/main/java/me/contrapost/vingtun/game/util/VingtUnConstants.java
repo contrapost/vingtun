@@ -1,5 +1,8 @@
 package me.contrapost.vingtun.game.util;
 
+/**
+ * Constants used in game logic
+ */
 public class VingtUnConstants {
 
     public static final int WIN_SCORE = 21;

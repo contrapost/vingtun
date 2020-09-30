@@ -18,6 +18,10 @@ import java.util.stream.Collectors;
 
 import static me.contrapost.vingtun.game.util.VingtUnConstants.NUMBER_OF_CARDS;
 
+/**
+ * Util for converting of file content to a list of {@link me.contrapost.vingtun.models.cards.Card}s.
+ * Initiate a new list of cards when required.
+ */
 public class DeckProcessor {
 
     public final static String CARD_REGEX = "([HDCS]([2-9]|10|[JKQA]))";
@@ -25,6 +29,12 @@ public class DeckProcessor {
     private DeckProcessor() {
     }
 
+    /**
+     * Converts a content of a file to a list of {@link Card}s
+     *
+     * @param deckFileName  path to file with deck of cards as String
+     * @return              array list of {@link Card}s
+     */
     public static ArrayList<Card> getFromFile(final String deckFileName) {
         ArrayList<Card> deck;
         Path deckFilePath = Paths.get(deckFileName);
@@ -57,6 +67,11 @@ public class DeckProcessor {
         return deck;
     }
 
+    /**
+     * Initiates a new deck of cards, cards are always initiated in the same order (grouped by value)
+     *
+     * @return  list of {@link Card}s
+     */
     public static ArrayList<Card> initiateNewDeck() {
         ArrayList<Card> cards = new ArrayList<>(NUMBER_OF_CARDS);
         Arrays.stream(CardValue.values())
@@ -83,6 +98,6 @@ public class DeckProcessor {
     }
 
     private static boolean correctSetOfCards(final ArrayList<Card> cards) {
-        return new HashSet<>(cards).size() == 52;
+        return new HashSet<>(cards).size() == NUMBER_OF_CARDS;
     }
 }

@@ -8,6 +8,7 @@ import me.contrapost.vingtun.models.game.GameResult;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import static me.contrapost.vingtun.game.util.VingtUnConstants.PUNTER_ADDITIONAL_CARD_LIMIT;
 import static me.contrapost.vingtun.game.util.VingtUnUtil.*;
@@ -53,10 +54,10 @@ public class VingtUnUtilTest {
 
         TestSet testSet = new TestSet(content);
         dealOriginalCards(testSet.getPunter(), testSet.getDealer()); // punter: [SA, CQ], dealer: [DA, C10]
-        GameResult gameResult = getOriginalCardDealResult(testSet.getPunter(), testSet.getDealer());
-        assertNotNull(gameResult);
-        assertEquals(gameResult.getWinner(), testSet.getPunter());
-        assertEquals(gameResult.getLoser(), testSet.getDealer());
+        Optional<GameResult>  gameResult = getOriginalCardDealResult(testSet.getPunter(), testSet.getDealer());
+        assertTrue(gameResult.isPresent());
+        assertEquals(gameResult.get().getWinner(), testSet.getPunter());
+        assertEquals(gameResult.get().getLoser(), testSet.getDealer());
     }
 
     @Test
@@ -67,10 +68,10 @@ public class VingtUnUtilTest {
 
         TestSet testSet = new TestSet(content);
         dealOriginalCards(testSet.getPunter(), testSet.getDealer()); // punter: [SA, CQ], dealer: [DA, C2]
-        GameResult gameResult = getOriginalCardDealResult(testSet.getPunter(), testSet.getDealer());
-        assertNotNull(gameResult);
-        assertEquals(gameResult.getWinner(), testSet.getPunter());
-        assertEquals(gameResult.getLoser(), testSet.getDealer());
+        Optional<GameResult>  gameResult = getOriginalCardDealResult(testSet.getPunter(), testSet.getDealer());
+        assertTrue(gameResult.isPresent());
+        assertEquals(gameResult.get().getWinner(), testSet.getPunter());
+        assertEquals(gameResult.get().getLoser(), testSet.getDealer());
     }
 
     @Test
@@ -81,10 +82,10 @@ public class VingtUnUtilTest {
 
         TestSet testSet = new TestSet(content);
         dealOriginalCards(testSet.getPunter(), testSet.getDealer()); // punter: [H8, CQ], dealer: [DA, C10]
-        GameResult gameResult = getOriginalCardDealResult(testSet.getPunter(), testSet.getDealer());
-        assertNotNull(gameResult);
-        assertEquals(gameResult.getWinner(), testSet.getDealer());
-        assertEquals(gameResult.getLoser(), testSet.getPunter());
+        Optional<GameResult>  gameResult = getOriginalCardDealResult(testSet.getPunter(), testSet.getDealer());
+        assertTrue(gameResult.isPresent());
+        assertEquals(gameResult.get().getWinner(), testSet.getDealer());
+        assertEquals(gameResult.get().getLoser(), testSet.getPunter());
     }
 
     @Test
@@ -95,10 +96,10 @@ public class VingtUnUtilTest {
 
         TestSet testSet = new TestSet(content);
         dealOriginalCards(testSet.getPunter(), testSet.getDealer()); // punter: [CA, HA], dealer: [DA, SA]
-        GameResult gameResult = getOriginalCardDealResult(testSet.getPunter(), testSet.getDealer());
-        assertNotNull(gameResult);
-        assertEquals(gameResult.getWinner(), testSet.getDealer());
-        assertEquals(gameResult.getLoser(), testSet.getPunter());
+        Optional<GameResult> gameResult = getOriginalCardDealResult(testSet.getPunter(), testSet.getDealer());
+        assertTrue(gameResult.isPresent());
+        assertEquals(gameResult.get().getWinner(), testSet.getDealer());
+        assertEquals(gameResult.get().getLoser(), testSet.getPunter());
     }
 
     @Test
@@ -109,8 +110,8 @@ public class VingtUnUtilTest {
 
         TestSet testSet = new TestSet(content);
         dealOriginalCards(testSet.getPunter(), testSet.getDealer()); // punter: [S3, HA], dealer: [C4, SA]
-        GameResult gameResult = getOriginalCardDealResult(testSet.getPunter(), testSet.getDealer());
-        assertNull(gameResult);
+        Optional<GameResult> gameResult = getOriginalCardDealResult(testSet.getPunter(), testSet.getDealer());
+        assertTrue(gameResult.isEmpty());
     }
 
     @Test
@@ -140,12 +141,11 @@ public class VingtUnUtilTest {
 
         TestSet testSet = new TestSet(content);
         testSet.getPunter().receiveCards(4); // S3, C4, HA, SA
-        GameResult result =
-                getAdditionalCardResult(testSet.getPunter(), testSet.getDealer(), getPlayersScore(testSet.getPunter()));
+        Optional<GameResult> result = getResultWithAdditionalCards(testSet.getPunter(), testSet.getDealer());
 
-        assertNotNull(result);
-        assertEquals(result.getWinner(), testSet.getDealer());
-        assertEquals(result.getLoser(), testSet.getPunter());
+        assertTrue(result.isPresent());
+        assertEquals(result.get().getWinner(), testSet.getDealer());
+        assertEquals(result.get().getLoser(), testSet.getPunter());
     }
 
     @Test
@@ -156,9 +156,8 @@ public class VingtUnUtilTest {
 
         TestSet testSet = new TestSet(content);
         testSet.getPunter().receiveCards(3); // S3, C4, HA
-        GameResult result =
-                getAdditionalCardResult(testSet.getPunter(), testSet.getDealer(), getPlayersScore(testSet.getPunter()));
+        Optional<GameResult> result = getResultWithAdditionalCards(testSet.getPunter(), testSet.getDealer());
 
-        assertNull(result);
+        assertTrue(result.isEmpty());
     }
 }

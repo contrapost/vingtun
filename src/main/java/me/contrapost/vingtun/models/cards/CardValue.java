@@ -1,7 +1,11 @@
 package me.contrapost.vingtun.models.cards;
 
+import javax.annotation.Nonnull;
 import java.util.NoSuchElementException;
 
+/**
+ * Possible card values with designations
+ */
 public enum CardValue {
     TWO(2, "2"),
     THREE(3, "3"),
@@ -25,7 +29,7 @@ public enum CardValue {
         this.designation = designation;
     }
 
-    public static CardValue getByDesignation(final String designation) {
+    public static CardValue getByDesignation(@Nonnull final String designation) {
         for (CardValue cardValue : values()) {
             if (cardValue.designation.equals(designation)) {
                 return cardValue;

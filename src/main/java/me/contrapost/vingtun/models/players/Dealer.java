@@ -8,6 +8,9 @@ import java.util.stream.IntStream;
 
 import static me.contrapost.vingtun.game.util.VingtUnUtil.getPlayersScore;
 
+/**
+ * Class that represents a dealer
+ */
 public class Dealer implements Player {
 
     private final Deck deck;

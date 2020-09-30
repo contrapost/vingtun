@@ -2,6 +2,9 @@ package me.contrapost.vingtun.models.cards;
 
 import java.util.Objects;
 
+/**
+ * Card class
+ */
 public class Card {
 
     private final Suit suit;
