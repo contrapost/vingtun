@@ -17,6 +17,10 @@ Implementation of traditional card game **Twenty-One** (Vingt-Un). Game logic is
 7. The winner is the one with higher score (practically it could be only dealer, otherwise dealer should lose the game 
 in the previous step)
 
+#### Deck of cards
+Deck of cards can be loaded from a file or initiated dynamically. A new deck is shuffled before a game. A deck loaded
+from a file is used in a game without shuffling. 
+
 ### How to build and run
 You can build the game app by running:
 ```shell script
@@ -34,7 +38,8 @@ You can run the game app with following flags:
 | Flag                   |      Description   |
 |------------------------|:-------------------|
 | **-f**, **--deckFile** |  to specify file name that contains deck of cards in the format "C3, SA, HJ...". NB! If the file name is not specified, the default file `defaultDeckFile.txt` placed in target folder would be used.      |
-| **-h, --help**         |  to print info        |
+| **-h, --help** <img width=400/>         |  to print info        |
+
 
 NB! If you run the game app without **-f** flag, new deck of cards would be generated dynamically.
 
