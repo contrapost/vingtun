@@ -1,4 +1,5 @@
-#Vingt-Un (21) game
+# Vingt-Un (21) game
+[![Build Status](https://travis-ci.com/contrapost/vingtun.svg?branch=master)](https://travis-ci.com/contrapost/vingtun)
 
 ### Intro
 Implementation of traditional card game **Twenty-One** (Vingt-Un). Game logic is based on the following rules:
