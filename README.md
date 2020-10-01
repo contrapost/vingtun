@@ -28,7 +28,7 @@ mvn clean intall
 ```
 To run the game just execute:
 ```shell script
-cd target && target java -jar vingtun-1.0-SNAPSHOT-jar-with-dependencies.jar
+cd target && java -jar vingtun-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
 Notice: it's necessary to run "fat" jar because the application has external dependencies, and it's more convenient than
 to add all external libs to class path as cli arguments.
