@@ -45,3 +45,10 @@ NB! If you run the game app without **-f** flag, new deck of cards would be gene
 
 ### Test coverage
 You can find test coverage report, when the game app is built, in `target/site/jacoco/index.html`
+
+### Documentation
+You can find documentation after you run:
+```shell script
+mvn javadoc:javadoc
+```
+in `target/site/apidocs/index.html`
